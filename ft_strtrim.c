@@ -6,12 +6,13 @@
 /*   By: ggiertzu <ggiertzu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 01:21:59 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/05/21 02:16:06 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/05/24 01:04:40 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char			*res;
@@ -31,14 +32,30 @@ char	*ft_strtrim(char const *s1, char const *set)
 		ft_bzero(res + ft_strlen(res) - set_len, set_len);
 	return (res);
 }
+*/
+char    *ft_strtrim(char const *s1, char const *set)
+{
+	char			*res;
+	unsigned long	end;
+
+
+	while (strchr(set, *s1) && *s1)
+		s1++;
+	end = ft_strlen(s1) - 1;
+	while (strchr(set, s1[end]) && end > 0)
+		end--;
+	res = malloc(end + 2);
+	ft_strlcpy(res, s1, end + 2);
+	return (res);
+}
 /*
 
 #include <stdio.h>
 
 int main(void)
 {
-	char test[] = "this is a test this";
-	char set[] = "this";
+	char test[] = "baccbaggggccba";
+	char set[] = "abc";
 	char *res = ft_strtrim(test, set);
 	printf("%s\n%s\n%s", test, set, res);
 //	printf("\n%s", *(&test + 1)	- 5);
