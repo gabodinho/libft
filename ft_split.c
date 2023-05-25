@@ -6,7 +6,7 @@
 /*   By: ggiertzu <ggiertzu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 00:33:08 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/05/18 20:36:13 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/05/25 03:00:52 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,54 @@ static size_t	ft_getword(char const *s, char c)
 	return (len);
 }
 
-char	**ft_split(char const *s, char c)
+static size_t	ft_nwords(char const *s, char c)
 {
-	char			**res;
-	char			*stor;
-	unsigned long	len;
-	unsigned long	idx;
+	unsigned long	n;
+	int				previous;
 
-	len = ft_strlen(s);
-	stor = malloc((len + 1));
-	res = malloc(((len + 1) / 2 + 1) * 8);
-	idx = 0;
+	n = 0;
+	previous = 0;
 	while (*s)
 	{
-		if (*s == c)
-			s++;
+		if (*s != c)
+			previous = 1;
 		else
 		{
-			len = ft_getword(s, c);
-			ft_strlcat(stor, s, len + 1);
-			res[idx] = stor;
-			stor = stor + len + 1;
-			idx++;
-			s = s + len;
+			if (previous)
+				n++;
+			previous = 0;
 		}
+		s++;
+	}
+	if (previous)
+		n++;
+	return (n);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	size_t	nwords;
+	size_t	idx;
+	size_t	lword;
+	char	**res;
+
+	nwords = ft_nwords(s, c);
+	idx = 0;
+	res = malloc(sizeof(char *) * (nwords + 1));
+	if (!res)
+		return (0);
+	while (idx < nwords)
+	{
+		while (*s == c && *s)
+			s++;
+		if (*s != c && *s)
+		{
+			lword = ft_getword(s, c);
+			res[idx] = malloc(sizeof(char) * (lword + 1));
+			ft_strlcpy(res[idx], s, lword + 1);
+			s += lword;
+		}
+		idx++;
 	}
 	res[idx] = 0;
 	return (res);
@@ -56,11 +80,12 @@ char	**ft_split(char const *s, char c)
 /*
 int main(void)
 {
-	const char str[] = " This is a test string !  ";
+	const char str[] = "      split       this for   me  !       ";
 	char delim = ' ';
+	printf("%lu", ft_nwords(str, delim));
 	char **res;
 	printf("String: %s\n", str);
-	printf("Delimiter: %c", delim);
+	printf("Delimiter: %d",(int) delim);
 	
 	res = ft_split(str, delim);
 	

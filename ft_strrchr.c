@@ -6,7 +6,7 @@
 /*   By: ggiertzu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 22:44:33 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/05/22 21:42:28 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/05/25 00:37:24 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	unsigned int	idx;
 	char			*ptr;
 
-	idx = 0;
 	ptr = 0;
 	while (*s)
 	{

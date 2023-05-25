@@ -6,7 +6,7 @@
 /*   By: ggiertzu <ggiertzu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:33:38 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/05/20 02:44:18 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/05/25 02:49:56 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	len = ft_strlen(s);
 	res = malloc(len + 1);
+	if (!res)
+		return (0);
 	idx = 0;
 	while (s[idx])
 	{
