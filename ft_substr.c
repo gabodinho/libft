@@ -6,7 +6,7 @@
 /*   By: ggiertzu <ggiertzu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 03:13:59 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/05/23 19:00:59 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/05/26 04:14:52 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (ft_strlen(s) > start)
 	{
-		if (start + len > ft_strlen(s))
+		if (start + len > ft_strlen(s) || len > ft_strlen(s))
 			str = malloc(ft_strlen(s) - start + 1);
 		else
 			str = malloc(len + 1);
@@ -31,6 +31,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		str[0] = 0;
 		return (str);
 	}
+	if (len > len + 1)
+		ft_strlcpy(str, &s[start], len);
 	ft_strlcpy(str, &s[start], len + 1);
 	return (str);
 }

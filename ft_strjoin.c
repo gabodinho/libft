@@ -6,7 +6,7 @@
 /*   By: ggiertzu <ggiertzu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 03:42:08 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/05/10 04:28:59 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/05/26 03:09:11 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	unsigned long	len;
 
 	len = ft_strlen(s1) + ft_strlen(s2);
-	ptr = malloc(len + 1);
+	ptr = malloc(sizeof(char) * (len + 1));
+	if (!ptr)
+		return (0);
 	ft_strlcpy(ptr, s1, ft_strlen(s1) + 1);
 	ft_strlcat(ptr, s2, len + 1);
 	return (ptr);

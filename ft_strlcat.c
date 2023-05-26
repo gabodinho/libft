@@ -6,7 +6,7 @@
 /*   By: ggiertzu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:22:56 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/05/22 19:36:15 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/05/26 04:00:06 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_dst = ft_strlen(dst);
 	while (dst[i] && i < size)
 		i++;
-	while (src[j] && (int) size - (int) i - 1 > (int) j)
+	while (src[j] && size > j + i + 1)
 	{
 		dst[i + j] = src[j];
 		j++;
@@ -39,8 +39,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 /*
 int	main(void)
 {
-	char dst[] = "aaaaaaaaaa";
-	char str[] = "bbbbbbbbbb";
+	char dst[] = "CCCCC";
+	char str[] = "AAAAAAAAA";
 	unsigned long s;	
 	unsigned long size = -1;
 	//s = strlcat(dst, str, size);
