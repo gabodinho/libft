@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggiertzu <ggiertzu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 00:44:35 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/06/01 01:54:14 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/06/01 01:36:29 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
+#include <stdio.h>
 
-void ft_lstadd_front(t_list **lst, t_list *new)
+typedef struct s_list
 {
-	new -> next = *lst;
-	*lst = new;
-	return ;
-}
-/*
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+
 void print_lst(t_list *lst)
 {
 	t_list *ptr;
@@ -35,6 +35,39 @@ void print_lst(t_list *lst)
 	return ;
 }
 
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*new;
+
+	new = malloc(sizeof(t_list));
+	new -> content = content;
+	new -> next = 0;
+	return (new);
+}
+// ´a -> b' is the same as '(*a).b'
+void ft_lstadd_front(t_list **lst, t_list *new)
+{
+	new -> next = *lst;
+	*lst = new;
+	return ;
+}
+
+t_list *ft_lstlast(t_list *lst)
+{
+	t_list *ptr;
+
+	ptr = lst;
+	while (ptr -> next)
+		ptr = ptr -> next;
+	return (ptr);
+}
+
+void ft_lstadd_back(t_list **lst, t_list *new)
+{
+	ft_lstlast(*lst) -> next = new;
+	return ;
+}
+
 int main(void)
 {
 	t_list *new = ft_lstnew("A");
@@ -44,6 +77,9 @@ int main(void)
 	t_list *third = ft_lstnew("C");
 	ft_lstadd_front(&new, third);
 	print_lst(third);
+	t_list *fourth = ft_lstnew("D");
+	ft_lstadd_back(&new, fourth);
+	print_lst(third);
 	return (1);
 }
-*/
+
