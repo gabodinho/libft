@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggiertzu <ggiertzu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 00:44:35 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/06/02 02:50:54 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/06/02 01:23:08 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static void	ft_clrrecu(t_list *lst, void (*del)(void*))
+{
+	if (lst -> next)
+		ft_clrrecu(lst -> next, del);
+	del(lst -> content);
+	free(lst);
+	return ;
+}
+
+void ft_lstclear(t_list **lst, void (*del)(void*))
+{
+	ft_clrrecu(*lst, del);
+	*lst = 0;
+	return ;
+}
 
 void print_lst(t_list *lst)
 {
@@ -25,15 +41,6 @@ void print_lst(t_list *lst)
 		ptr = ptr -> next;
 	}
 	printf("last node: %s\n", (char *) ptr -> content);
-	return ;
-}
-
-void ft_lstadd_back(t_list **lst, t_list *new)
-{
-	if (!lst)
-		*lst = new;
-	else
-		ft_lstlast(*lst) -> next = new;
 	return ;
 }
 

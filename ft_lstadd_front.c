@@ -6,7 +6,7 @@
 /*   By: ggiertzu <ggiertzu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 00:44:35 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/06/01 01:54:14 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/06/02 04:44:00 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void ft_lstadd_front(t_list **lst, t_list *new)
 	*lst = new;
 	return ;
 }
-/*
+
 void print_lst(t_list *lst)
 {
 	t_list *ptr;
@@ -46,4 +46,4 @@ int main(void)
 	print_lst(third);
 	return (1);
 }
-*/
+
