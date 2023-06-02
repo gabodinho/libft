@@ -6,7 +6,7 @@
 /*   By: ggiertzu <ggiertzu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 00:44:35 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/06/02 02:52:20 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/06/02 23:04:04 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,6 @@ t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	return (start);
 }
 /*
-t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
-{
-	void *content;
-
-	while (lst)
-	{
-		content = f(lst -> content);
-		if (
-*/
 void print_lst(t_list *lst)
 {
 	t_list *ptr;
@@ -55,39 +46,6 @@ void print_lst(t_list *lst)
 		ptr = ptr -> next;
 	}
 	printf("last node: %s\n", (char *) ptr -> content);
-	return ;
-}
-
-t_list	*ft_lstnew(void *content)
-{
-	t_list	*new;
-
-	new = malloc(sizeof(t_list));
-	new -> content = content;
-	new -> next = 0;
-	return (new);
-}
-// ´a -> b' is the same as '(*a).b'
-void ft_lstadd_front(t_list **lst, t_list *new)
-{
-	new -> next = *lst;
-	*lst = new;
-	return ;
-}
-
-t_list *ft_lstlast(t_list *lst)
-{
-	t_list *ptr;
-
-	ptr = lst;
-	while (ptr -> next)
-		ptr = ptr -> next;
-	return (ptr);
-}
-
-void ft_lstadd_back(t_list **lst, t_list *new)
-{
-	ft_lstlast(*lst) -> next = new;
 	return ;
 }
 
@@ -105,4 +63,4 @@ int main(void)
 	print_lst(third);
 	return (1);
 }
-
+*/

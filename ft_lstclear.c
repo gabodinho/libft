@@ -27,7 +27,7 @@ void ft_lstclear(t_list **lst, void (*del)(void*))
 	*lst = 0;
 	return ;
 }
-
+/*
 void print_lst(t_list *lst)
 {
 	t_list *ptr;
@@ -58,4 +58,4 @@ int main(void)
 	print_lst(third);
 	return (1);
 }
-
+*/

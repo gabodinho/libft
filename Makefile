@@ -6,7 +6,7 @@
 #    By: ggiertzu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/20 18:33:58 by ggiertzu          #+#    #+#              #
-#    Updated: 2023/06/02 04:46:58 by ggiertzu         ###   ########.fr        #
+#    Updated: 2023/06/03 00:36:43 by ggiertzu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,25 +32,30 @@ BNS_OBJS = $(BNS:.c=.o)
 DEPS = $(SRCS:.c=.d)
 BNS_DEPS = $(BNS:.c=.d)
 
-.PHONY: all clean fclean
+.PHONY: all clean fclean re bonus
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(HEADER) $(DEPS)
+$(NAME): $(OBJS) $(HEADER) # $(DEPS)
 	ar rcs $@ $^
+
+$(OBJS): %.o: %.c $(HEADER) $(DEPS)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(DEPS): %.d: %.c
 	$(CC) $(CFLAGS) -MM $< -MT $(@:.d=.o) >$@
 
-include $(DEPS)
-
-bonus: $(BNS_OBJS) $(OBJS) $(HEADER) $(DEPS) $(BNS_DEPS)
+bonus: $(OBJS) $(BNS_OBJS) $(HEADER) # $(DEPS) $(BNS_DEPS)
 	ar rcs $(NAME) $^
+
+$(BNS_OBJS): %.o: %.c $(HEADER) $(BNS_DEPS)
+	$(CC) $(CFLAGS) -c $< -o $@	
 
 $(BNS_DEPS): %.d: %.c
 	$(CC) $(CFLAGS) -MM $< -MT $(@:.d=.o) >$@
 
 include $(BNS_DEPS)
+include $(DEPS)
 
 clean:
 	${RM} $(OBJS) $(BNS_OBJS) $(DEPS) $(BNS_DEPS)

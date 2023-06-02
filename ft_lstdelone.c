@@ -6,12 +6,20 @@
 /*   By: ggiertzu <ggiertzu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 00:44:35 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/06/01 14:58:23 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/06/02 23:01:37 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+void ft_lstdelone(t_list *lst, void (*del)(void*))
+{
+	del(lst -> content);
+	free(lst);
+	return ;
+}
+
+/*
 void print_lst(t_list *lst)
 {
 	t_list *ptr;
@@ -29,41 +37,6 @@ void print_lst(t_list *lst)
 	return ;
 }
 
-t_list	*ft_lstnew(void *content)
-{
-	t_list	*new;
-
-	new = malloc(sizeof(t_list));
-	new -> content = malloc(sizeof(content));
-	new -> content = content;
-	new -> next = 0;
-	return (new);
-}
-// ´a -> b' is the same as '(*a).b'
-void ft_lstadd_front(t_list **lst, t_list *new)
-{
-	new -> next = *lst;
-	*lst = new;
-	return ;
-}
-
-t_list *ft_lstlast(t_list *lst)
-{
-	t_list *ptr;
-
-	ptr = lst;
-	while (ptr -> next)
-		ptr = ptr -> next;
-	return (ptr);
-}
-
-void ft_lstdelone(t_list *lst, void (*del)(void*))
-{
-	del(lst -> content);
-	free(lst);
-	return ;
-}
-
 int main(void)
 {
 	t_list *new = ft_lstnew("A");
@@ -77,4 +50,4 @@ int main(void)
 	printf("last node content is: %s", (char *) ft_lstlast(third) -> content);
 	return (1);
 }
-
+*/

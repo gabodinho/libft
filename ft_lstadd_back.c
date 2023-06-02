@@ -6,12 +6,21 @@
 /*   By: ggiertzu <ggiertzu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 00:44:35 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/06/02 02:50:54 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/06/02 23:46:58 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+void ft_lstadd_back(t_list **lst, t_list *new)
+{
+	if (!lst)
+		*lst = new;
+	else
+		ft_lstlast(*lst) -> next = new;
+	return ;
+}
+/*
 void print_lst(t_list *lst)
 {
 	t_list *ptr;
@@ -25,15 +34,6 @@ void print_lst(t_list *lst)
 		ptr = ptr -> next;
 	}
 	printf("last node: %s\n", (char *) ptr -> content);
-	return ;
-}
-
-void ft_lstadd_back(t_list **lst, t_list *new)
-{
-	if (!lst)
-		*lst = new;
-	else
-		ft_lstlast(*lst) -> next = new;
 	return ;
 }
 
@@ -51,4 +51,4 @@ int main(void)
 	print_lst(third);
 	return (1);
 }
-
+*/
