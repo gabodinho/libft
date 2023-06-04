@@ -6,13 +6,13 @@
 /*   By: ggiertzu <ggiertzu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 00:44:35 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/06/02 04:44:00 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:37:54 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	new -> next = *lst;
 	*lst = new;

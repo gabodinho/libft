@@ -6,17 +6,19 @@
 /*   By: ggiertzu <ggiertzu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 00:44:35 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/06/02 23:03:11 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:22:55 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list *ft_lstlast(t_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_list *ptr;
+	t_list	*ptr;
 
 	ptr = lst;
+	if (!lst)
+		return (0);
 	while (ptr -> next)
 		ptr = ptr -> next;
 	return (ptr);

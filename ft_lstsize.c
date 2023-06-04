@@ -6,16 +6,16 @@
 /*   By: ggiertzu <ggiertzu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 00:44:35 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/06/02 23:05:13 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:24:46 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-	t_list *ptr;
-	int res;
+	t_list	*ptr;
+	int		res;
 
 	ptr = lst;
 	res = 0;

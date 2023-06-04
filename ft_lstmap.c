@@ -6,18 +6,20 @@
 /*   By: ggiertzu <ggiertzu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 00:44:35 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/06/02 23:04:04 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:23:52 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list *start;
-	void *content;
+	t_list	*start;
+	void	*content;
 
 	start = 0;
+	if (!lst)
+		return (0);
 	while (lst)
 	{
 		content = f(lst -> content);
@@ -29,7 +31,7 @@ t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		ft_lstadd_back(&start, ft_lstnew(content));
 		lst = lst -> next;
 	}
-	ft_lstlast(start) -> next = 0;
+	ft_lstlast(start)-> next = 0;
 	return (start);
 }
 /*

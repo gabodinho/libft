@@ -6,7 +6,7 @@
 /*   By: ggiertzu <ggiertzu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 00:44:35 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/06/02 23:02:18 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:42:21 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void*))
 {
+	if (!lst)
+		return ;
 	f(lst -> content);
 	if (lst -> next)
 		ft_lstiter(lst -> next, f);

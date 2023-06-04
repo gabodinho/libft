@@ -6,7 +6,7 @@
 /*   By: ggiertzu <ggiertzu@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 00:44:35 by ggiertzu          #+#    #+#             */
-/*   Updated: 2023/06/02 01:23:08 by ggiertzu         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:27:10 by ggiertzu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ static void	ft_clrrecu(t_list *lst, void (*del)(void*))
 	return ;
 }
 
-void ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
+	if (!*lst)
+		return ;
 	ft_clrrecu(*lst, del);
 	*lst = 0;
 	return ;
